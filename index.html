@@ -118,6 +118,9 @@ input[type=text]:focus,input[type=number]:focus{border-color:var(--accent)}
   <div class="pane active" id="pane-samples">
     <div class="card">
       <div class="card-title">Sample configuration</div>
+      <div class="alert alert-warn" style="margin-bottom:8px">
+        Note: The Browse button lets you pick a file so its name is filled in automatically. Due to browser security, only the filename (not the full path) is captured — you may need to edit the path to match where files live on your HPC.
+      </div>
       <div class="alert alert-info" style="margin-bottom:14px">
         Each sample can have 1 or more FASTQ.gz files (e.g. from different lanes). Multiple files are concatenated automatically before alignment.
       </div>
@@ -145,11 +148,19 @@ input[type=text]:focus,input[type=number]:focus{border-color:var(--accent)}
       <div class="card-title">Genome &amp; annotation</div>
       <div class="field">
         <label class="field-label">Genome FASTA</label>
-        <input type="text" id="genomeFa" placeholder="/path/to/GRCh38.primary_assembly.genome.fa">
+        <div style="display:flex;gap:8px">
+          <input type="text" id="genomeFa" placeholder="/path/to/GRCh38.primary_assembly.genome.fa">
+          <input type="file" id="refpicker-genomeFa" accept=".fa,.fasta,.fa.gz" style="display:none" onchange="pickRef(this,'genomeFa')">
+          <button class="btn btn-sm" style="flex-shrink:0" onclick="browseRef('genomeFa')">Browse</button>
+        </div>
       </div>
       <div class="field">
         <label class="field-label">GTF annotation</label>
-        <input type="text" id="gtfFile" placeholder="/path/to/gencode.v44.primary_assembly.annotation.gtf">
+        <div style="display:flex;gap:8px">
+          <input type="text" id="gtfFile" placeholder="/path/to/gencode.v44.primary_assembly.annotation.gtf">
+          <input type="file" id="refpicker-gtfFile" accept=".gtf,.gtf.gz,.gff" style="display:none" onchange="pickRef(this,'gtfFile')">
+          <button class="btn btn-sm" style="flex-shrink:0" onclick="browseRef('gtfFile')">Browse</button>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -334,7 +345,9 @@ function renderSamples() {
     for (var fi = 0; fi < s.files.length; fi++) {
       html += '<div class="fastq-row">';
       html += '<span style="color:var(--teal);font-size:12px;font-family:var(--mono);flex-shrink:0">file ' + (fi+1) + '</span>';
-      html += '<input type="text" value="' + esc(s.files[fi]) + '" placeholder="/path/to/reads.fastq.gz" oninput="samples['+si+'].files['+fi+']=this.value">';
+      html += '<input type="text" id="fq-'+si+'-'+fi+'" value="' + esc(s.files[fi]) + '" placeholder="/path/to/reads.fastq.gz" oninput="samples['+si+'].files['+fi+']=this.value">';
+      html += '<input type="file" id="fqfile-'+si+'-'+fi+'" accept=".gz,.fastq,.fq" style="display:none" onchange="pickFile(this,'+si+','+fi+')">';
+      html += '<button class="btn btn-sm" style="flex-shrink:0;padding:4px 10px;font-size:11px" onclick="document.getElementById(\'fqfile-'+si+'-'+fi+'\').click()">Browse</button>';
       if (s.files.length > 1) {
         html += '<button class="btn btn-danger" style="padding:2px 8px;font-size:11px;flex-shrink:0" onclick="removeFastq('+si+','+fi+')">x</button>';
       }
@@ -370,6 +383,26 @@ function removeFastq(si, fi) {
   if (samples[si].files.length > 1) {
     samples[si].files.splice(fi, 1);
     renderSamples();
+  }
+}
+
+function pickFile(input, si, fi) {
+  if (input.files && input.files[0]) {
+    var path = input.files[0].webkitRelativePath || input.files[0].name;
+    samples[si].files[fi] = path;
+    var textInput = document.getElementById('fq-'+si+'-'+fi);
+    if (textInput) textInput.value = path;
+  }
+}
+
+function browseRef(fieldId) {
+  document.getElementById('refpicker-'+fieldId).click();
+}
+
+function pickRef(input, fieldId) {
+  if (input.files && input.files[0]) {
+    var path = input.files[0].webkitRelativePath || input.files[0].name;
+    document.getElementById(fieldId).value = path;
   }
 }
 
