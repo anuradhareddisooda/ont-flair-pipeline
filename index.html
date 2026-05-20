@@ -167,7 +167,11 @@ input[type=text]:focus,input[type=number]:focus{border-color:var(--accent)}
       <div class="card-title">Output &amp; environment</div>
       <div class="field">
         <label class="field-label">Output base directory</label>
-        <input type="text" id="outDir" placeholder="/path/to/output">
+        <div style="display:flex;gap:8px">
+          <input type="text" id="outDir" placeholder="Select or type your output folder path">
+          <input type="file" id="refpicker-outDir" webkitdirectory style="display:none" onchange="pickDir(this,'outDir')">
+          <button class="btn btn-sm" style="flex-shrink:0" onclick="document.getElementById('refpicker-outDir').click()">Browse folder</button>
+        </div>
       </div>
       <div class="grid2" style="gap:14px">
         <div class="field">
@@ -392,6 +396,15 @@ function pickFile(input, si, fi) {
     samples[si].files[fi] = path;
     var textInput = document.getElementById('fq-'+si+'-'+fi);
     if (textInput) textInput.value = path;
+  }
+}
+
+function pickDir(input, fieldId) {
+  if (input.files && input.files[0]) {
+    // webkitRelativePath gives "foldername/filename" — extract just the folder path
+    var rel = input.files[0].webkitRelativePath;
+    var folder = rel ? rel.split('/')[0] : '';
+    document.getElementById(fieldId).value = folder;
   }
 }
 
