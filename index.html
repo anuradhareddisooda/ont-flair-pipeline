@@ -7,27 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0d1117;
-  --surface: #161b22;
-  --surface2: #1c2330;
-  --border: #30363d;
-  --border2: #484f58;
-  --text: #e6edf3;
-  --muted: #8b949e;
-  --accent: #58a6ff;
-  --accent2: #3fb950;
-  --warn: #d29922;
-  --danger: #f85149;
-  --purple: #bc8cff;
-  --teal: #39c5cf;
-  --font: 'IBM Plex Sans', sans-serif;
-  --mono: 'IBM Plex Mono', monospace;
-}
+:root{--bg:#0d1117;--surface:#161b22;--surface2:#1c2330;--border:#30363d;--border2:#484f58;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--accent2:#3fb950;--warn:#d29922;--danger:#f85149;--purple:#bc8cff;--teal:#39c5cf;--font:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;min-height:100vh}
-
-/* Layout */
 .app{display:grid;grid-template-columns:220px 1fr;grid-template-rows:56px 1fr;min-height:100vh}
 .topbar{grid-column:1/-1;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:16px}
 .topbar .logo{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:500;letter-spacing:.5px}
@@ -36,115 +18,66 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14
 .badge-pill{font-size:11px;padding:2px 10px;border-radius:20px;font-family:var(--mono)}
 .badge-blue{background:#1c3557;color:var(--accent);border:1px solid #2d5a8e}
 .badge-green{background:#122d1a;color:var(--accent2);border:1px solid #1e4d2b}
-.badge-amber{background:#2d2008;color:var(--warn);border:1px solid #4d3a10}
 .badge-purple{background:#22163a;color:var(--purple);border:1px solid #3d2860}
-
-/* Sidebar */
 .sidebar{background:var(--surface);border-right:1px solid var(--border);padding:16px 0;display:flex;flex-direction:column;gap:2px}
 .nav-item{display:flex;align-items:center;gap:10px;padding:8px 16px;cursor:pointer;color:var(--muted);font-size:13px;border-left:2px solid transparent;transition:.15s}
 .nav-item:hover{color:var(--text);background:var(--surface2)}
 .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:rgba(88,166,255,.07)}
-.nav-item svg{flex-shrink:0;opacity:.7}
-.nav-item.active svg{opacity:1}
 .nav-sep{height:1px;background:var(--border);margin:8px 12px}
 .nav-label{font-size:10px;color:var(--muted);padding:6px 16px;letter-spacing:.8px;text-transform:uppercase;font-family:var(--mono)}
-
-/* Main */
 .main{padding:24px;overflow-y:auto;max-height:calc(100vh - 56px)}
 .pane{display:none}.pane.active{display:block}
-
-/* Cards */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px}
-.card-title{font-size:13px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;font-family:var(--mono);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.card-title svg{opacity:.6}
-
-/* Form elements */
+.card-title{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;font-family:var(--mono);margin-bottom:14px}
 label.field-label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;font-family:var(--mono)}
-input[type=text],input[type=number],select,textarea{
-  background:var(--bg);border:1px solid var(--border);border-radius:6px;
-  color:var(--text);font-family:var(--mono);font-size:12px;
-  padding:7px 11px;width:100%;outline:none;transition:.15s
-}
-input[type=text]:focus,input[type=number]:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(88,166,255,.12)}
-select{cursor:pointer}
+input[type=text],input[type=number],select{background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:12px;padding:7px 11px;width:100%;outline:none;transition:.15s}
+input[type=text]:focus,input[type=number]:focus{border-color:var(--accent)}
 .field{margin-bottom:14px}
-
-/* Buttons */
-.btn{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:6px;border:1px solid var(--border2);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:13px;cursor:pointer;transition:.15s}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:6px;border:1px solid var(--border2);background:var(--surface2);color:var(--text);font-family:var(--font);font-size:13px;cursor:pointer;transition:.15s;white-space:nowrap}
 .btn:hover{border-color:var(--accent);color:var(--accent)}
 .btn-primary{background:#1a3a5c;border-color:#2d6098;color:var(--accent)}
 .btn-primary:hover{background:#1f4570}
 .btn-success{background:#122d1a;border-color:#1e4d2b;color:var(--accent2)}
-.btn-success:hover{background:#183a22}
-.btn-danger{background:transparent;border-color:#5a2020;color:#f85149;padding:4px 9px;font-size:12px}
+.btn-danger{background:transparent;border-color:#5a2020;color:#f85149;padding:4px 10px;font-size:12px}
 .btn-danger:hover{background:#2d1010}
 .btn-sm{padding:4px 10px;font-size:12px}
-
-/* Sample cards */
 .sample-card{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:10px}
-.sample-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.sample-num{width:24px;height:24px;border-radius:4px;background:#1a3a5c;border:1px solid #2d6098;color:var(--accent);font-size:11px;font-family:var(--mono);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.sample-name{flex:1}
+.sample-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.sample-num{min-width:24px;height:24px;border-radius:4px;background:#1a3a5c;border:1px solid #2d6098;color:var(--accent);font-size:11px;font-family:var(--mono);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0 4px}
 .fastq-list{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
 .fastq-row{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:5px 10px}
-.fastq-icon{color:var(--teal);font-size:16px;flex-shrink:0}
-.fastq-row input{border:none;background:transparent;font-size:12px;color:var(--muted);padding:0;flex:1}
-.fastq-row input:focus{outline:none;color:var(--text)}
+.fastq-row input{border:none;background:transparent;font-size:12px;color:var(--muted);padding:0;flex:1;width:100%;outline:none}
+.fastq-row input:focus{color:var(--text)}
 .multi-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-family:var(--mono);color:var(--teal);margin-top:4px}
-
-/* Toggle */
-.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)}
+.toggle-row{display:flex;align-items:flex-start;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);gap:16px}
 .toggle-row:last-child{border-bottom:none}
 .toggle-label{font-size:13px;color:var(--text)}
-.toggle-desc{font-size:11px;color:var(--muted);margin-top:1px;font-family:var(--mono)}
-.toggle{position:relative;width:38px;height:21px;flex-shrink:0}
+.toggle-desc{font-size:11px;color:var(--muted);margin-top:2px;font-family:var(--mono)}
+.toggle{position:relative;width:38px;height:21px;flex-shrink:0;margin-top:2px}
 .toggle input{display:none}
 .tog-slider{position:absolute;inset:0;background:var(--surface2);border:1px solid var(--border2);border-radius:21px;cursor:pointer;transition:.2s}
 .tog-slider:before{content:'';position:absolute;height:15px;width:15px;left:2px;bottom:2px;background:var(--muted);border-radius:50%;transition:.2s}
 .toggle input:checked+.tog-slider{background:#1a3a5c;border-color:var(--accent)}
 .toggle input:checked+.tog-slider:before{transform:translateX(17px);background:var(--accent)}
-
-/* Step list */
 .step{display:flex;align-items:flex-start;gap:14px;padding:10px 0;border-bottom:1px solid var(--border)}
 .step:last-child{border-bottom:none}
 .step-num{width:26px;height:26px;border-radius:50%;border:1px solid var(--border2);color:var(--muted);font-size:11px;font-family:var(--mono);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
 .step-body{flex:1}
 .step-name{font-size:13px;font-weight:500}
 .step-desc{font-size:12px;color:var(--muted);font-family:var(--mono);margin-top:2px}
-.step-status{padding-top:2px}
-
-/* Alerts */
-.alert{border-radius:6px;padding:10px 14px;font-size:12px;display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;font-family:var(--mono)}
-.alert-warn{background:#2d2008;border:1px solid #4d3a10;color:var(--warn)}
+.alert{border-radius:6px;padding:10px 14px;font-size:12px;display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;font-family:var(--mono);line-height:1.5}
 .alert-info{background:#0d2236;border:1px solid #1a3a5c;color:var(--accent)}
+.alert-warn{background:#2d2008;border:1px solid #4d3a10;color:var(--warn)}
 .alert-success{background:#0d2218;border:1px solid #1a3a2a;color:var(--accent2)}
-.alert-danger{background:#2d0d0d;border:1px solid #5a1a1a;color:var(--danger)}
-
-/* Code block */
-.code-wrap{position:relative}
-.code-block{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:14px;font-family:var(--mono);font-size:11px;line-height:1.7;color:#adbac7;white-space:pre;overflow:auto;max-height:420px;tab-size:2}
-.code-block .cm{color:#57ab5a}.code-block .kw{color:var(--purple)}.code-block .str{color:var(--teal)}.code-block .flag{color:var(--warn)}
-.copy-btn{position:absolute;top:10px;right:10px;font-size:11px;padding:4px 10px}
-.line-num{color:#484f58;user-select:none;margin-right:16px;display:inline-block;width:24px;text-align:right}
-
-/* Grid */
+.code-block{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:14px;font-family:var(--mono);font-size:11px;line-height:1.7;color:#adbac7;white-space:pre;overflow:auto;max-height:500px}
+.cm{color:#57ab5a}.kw{color:var(--purple)}.str{color:var(--teal)}.flag{color:var(--warn)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .metric{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px 16px}
 .metric .val{font-size:24px;font-weight:300;font-family:var(--mono);color:var(--accent)}
 .metric .lbl{font-size:11px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
-
-/* Progress bar */
-.progress-bar{height:3px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:6px}
-.progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:.4s}
-
-/* Divider */
-.divider{height:1px;background:var(--border);margin:16px 0}
-
-/* Actions row */
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
-
-/* Responsive */
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.empty-state{color:var(--muted);font-size:13px;font-family:var(--mono);padding:12px 0}
 @media(max-width:720px){
   .app{grid-template-columns:1fr;grid-template-rows:56px auto 1fr}
   .sidebar{flex-direction:row;overflow-x:auto;padding:0;border-right:none;border-bottom:1px solid var(--border)}
@@ -158,7 +91,6 @@ select{cursor:pointer}
 <body>
 <div class="app">
 
-<!-- Topbar -->
 <header class="topbar">
   <div class="logo">ONT<span>/</span>FLAIR <span>// isoform pipeline</span></div>
   <div class="topbar-right">
@@ -168,63 +100,32 @@ select{cursor:pointer}
   </div>
 </header>
 
-<!-- Sidebar -->
 <nav class="sidebar">
   <span class="nav-label">Configure</span>
-  <div class="nav-item active" onclick="showPane('samples')" id="nav-samples">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
-    Samples
-  </div>
-  <div class="nav-item" onclick="showPane('reference')" id="nav-reference">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-    Reference
-  </div>
-  <div class="nav-item" onclick="showPane('params')" id="nav-params">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-    Parameters
-  </div>
+  <div class="nav-item active" onclick="showPane('samples')" id="nav-samples">Samples</div>
+  <div class="nav-item" onclick="showPane('reference')" id="nav-reference">Reference</div>
+  <div class="nav-item" onclick="showPane('params')" id="nav-params">Parameters</div>
   <div class="nav-sep"></div>
   <span class="nav-label">Run</span>
-  <div class="nav-item" onclick="showPane('pipeline')" id="nav-pipeline">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-    Pipeline
-  </div>
-  <div class="nav-item" onclick="showPane('script')" id="nav-script">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-    Script preview
-  </div>
-  <div class="nav-item" onclick="showPane('help')" id="nav-help">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    Help
-  </div>
+  <div class="nav-item" onclick="showPane('pipeline')" id="nav-pipeline">Pipeline</div>
+  <div class="nav-item" onclick="showPane('script')" id="nav-script">Script preview</div>
+  <div class="nav-item" onclick="showPane('help')" id="nav-help">Help</div>
 </nav>
 
-<!-- Main content -->
 <main class="main">
 
   <!-- SAMPLES -->
   <div class="pane active" id="pane-samples">
     <div class="card">
-      <div class="card-title">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
-        Sample configuration
-      </div>
+      <div class="card-title">Sample configuration</div>
       <div class="alert alert-info" style="margin-bottom:14px">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Each sample can have 1 or more FASTQ.gz files (e.g. from different lanes). Multiple files are automatically concatenated before alignment.
+        Each sample can have 1 or more FASTQ.gz files (e.g. from different lanes). Multiple files are concatenated automatically before alignment.
       </div>
       <div id="sample-list"></div>
-      <button class="btn btn-primary" onclick="addSample()" style="margin-top:4px">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Add sample
-      </button>
+      <button class="btn btn-primary" onclick="addSample()" style="margin-top:8px">+ Add sample</button>
     </div>
-
     <div class="card">
-      <div class="card-title">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        Gene of interest
-      </div>
+      <div class="card-title">Gene of interest</div>
       <div class="grid2" style="gap:14px">
         <div class="field">
           <label class="field-label">Ensembl gene ID</label>
@@ -241,12 +142,9 @@ select{cursor:pointer}
   <!-- REFERENCE -->
   <div class="pane" id="pane-reference">
     <div class="card">
-      <div class="card-title">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        Genome &amp; annotation
-      </div>
+      <div class="card-title">Genome &amp; annotation</div>
       <div class="field">
-        <label class="field-label">Genome FASTA (.fa / .fasta)</label>
+        <label class="field-label">Genome FASTA</label>
         <input type="text" id="genomeFa" placeholder="/path/to/GRCh38.primary_assembly.genome.fa">
       </div>
       <div class="field">
@@ -255,21 +153,18 @@ select{cursor:pointer}
       </div>
     </div>
     <div class="card">
-      <div class="card-title">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-        Output &amp; environment
-      </div>
+      <div class="card-title">Output &amp; environment</div>
       <div class="field">
         <label class="field-label">Output base directory</label>
         <input type="text" id="outDir" placeholder="/path/to/output">
       </div>
       <div class="grid2" style="gap:14px">
         <div class="field">
-          <label class="field-label">Conda environment</label>
+          <label class="field-label">Conda environment name</label>
           <input type="text" id="condaEnv" value="flair">
         </div>
         <div class="field">
-          <label class="field-label">Threads (align step)</label>
+          <label class="field-label">Threads</label>
           <input type="number" id="threads" value="24" min="1" max="128">
         </div>
       </div>
@@ -282,17 +177,15 @@ select{cursor:pointer}
       <div class="card-title">Mode</div>
       <div class="toggle-row">
         <div>
-          <div class="toggle-label">Use <code style="font-family:var(--mono);color:var(--teal)">flair transcriptome</code> (single-step per sample)</div>
-          <div class="toggle-desc">Requires pre-sorted BAM input. Skips align/correct/collapse stages.</div>
+          <div class="toggle-label">Use flair transcriptome (single-step per sample)</div>
+          <div class="toggle-desc">Requires pre-sorted BAM. Skips align / correct / collapse.</div>
         </div>
         <label class="toggle"><input type="checkbox" id="useTranscriptome" onchange="updateModeAlert()"><span class="tog-slider"></span></label>
       </div>
       <div id="mode-alert" class="alert alert-info" style="margin-top:12px">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         Standard mode: align → correct → collapse → combine → quantify → predictProductivity
       </div>
     </div>
-
     <div class="card" id="align-params">
       <div class="card-title">flair align</div>
       <div class="toggle-row">
@@ -303,7 +196,6 @@ select{cursor:pointer}
         <label class="toggle"><input type="checkbox" id="nvrna" checked><span class="tog-slider"></span></label>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title">flair collapse</div>
       <div class="toggle-row">
@@ -321,13 +213,12 @@ select{cursor:pointer}
         <label class="toggle"><input type="checkbox" id="checkSplice" checked><span class="tog-slider"></span></label>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title">predictProductivity</div>
       <div class="toggle-row">
         <div>
           <div class="toggle-label">--longestORF</div>
-          <div class="toggle-desc">Use the longest ORF per isoform for productivity prediction</div>
+          <div class="toggle-desc">Use the longest ORF per isoform</div>
         </div>
         <label class="toggle"><input type="checkbox" id="longestOrf" checked><span class="tog-slider"></span></label>
       </div>
@@ -340,31 +231,14 @@ select{cursor:pointer}
       <div class="card-title">Pipeline overview</div>
       <div id="step-list"></div>
     </div>
-
     <div class="grid3" style="margin-bottom:16px">
-      <div class="metric">
-        <div class="val" id="m-samples">0</div>
-        <div class="lbl">Samples</div>
-      </div>
-      <div class="metric">
-        <div class="val" id="m-fastq">0</div>
-        <div class="lbl">FASTQ files</div>
-      </div>
-      <div class="metric">
-        <div class="val" id="m-steps">8</div>
-        <div class="lbl">Pipeline steps</div>
-      </div>
+      <div class="metric"><div class="val" id="m-samples">0</div><div class="lbl">Samples</div></div>
+      <div class="metric"><div class="val" id="m-fastq">0</div><div class="lbl">FASTQ files</div></div>
+      <div class="metric"><div class="val" id="m-steps">8</div><div class="lbl">Steps</div></div>
     </div>
-
     <div class="actions">
-      <button class="btn btn-success" onclick="showPane('script')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        Generate script
-      </button>
-      <button class="btn" onclick="validateAndShow()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        Validate inputs
-      </button>
+      <button class="btn btn-success" onclick="showPane('script')">Generate script</button>
+      <button class="btn" onclick="validateAndShow()">Validate inputs</button>
     </div>
     <div id="validation-out" style="margin-top:12px"></div>
   </div>
@@ -372,55 +246,37 @@ select{cursor:pointer}
   <!-- SCRIPT -->
   <div class="pane" id="pane-script">
     <div class="card">
-      <div class="card-title">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        Generated shell script
-      </div>
+      <div class="card-title">Generated shell script</div>
       <div class="actions" style="margin-bottom:14px">
-        <button class="btn btn-primary" onclick="copyScript()" id="copy-btn">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy to clipboard
-        </button>
-        <button class="btn" onclick="downloadScript()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download .sh
-        </button>
+        <button class="btn btn-primary" onclick="copyScript()" id="copy-btn">Copy to clipboard</button>
+        <button class="btn" onclick="downloadScript()">Download .sh</button>
       </div>
-      <div class="code-wrap">
-        <pre class="code-block" id="script-out"><!-- filled by JS --></pre>
-      </div>
+      <pre class="code-block" id="script-out"></pre>
     </div>
   </div>
 
   <!-- HELP -->
   <div class="pane" id="pane-help">
     <div class="card">
-      <div class="card-title">Quick start</div>
-      <ol style="padding-left:18px;line-height:2;font-size:13px;color:var(--muted)">
-        <li><b style="color:var(--text)">Samples</b> — Add each sample, name it, and paste the path(s) to its FASTQ.gz file(s). For multi-lane data, click "Add lane/file" and add the second (or third…) file — they'll be cat'd automatically.</li>
-        <li><b style="color:var(--text)">Reference</b> — Set the genome FASTA, GTF annotation, output directory, and conda env name.</li>
-        <li><b style="color:var(--text)">Parameters</b> — Toggle FLAIR flags as needed. Switch to transcriptome mode if you're starting from sorted BAMs.</li>
-        <li><b style="color:var(--text)">Script preview</b> — Copy or download the shell script, then run it on your HPC.</li>
+      <div class="card-title">How to use</div>
+      <ol style="padding-left:18px;line-height:2.2;font-size:13px;color:var(--muted)">
+        <li><b style="color:var(--text)">Samples</b> — Click "+ Add sample". Name it. Paste the full path to its FASTQ.gz file. Click "Add lane / file" if you have multiple files for the same sample — they'll be merged automatically.</li>
+        <li><b style="color:var(--text)">Reference</b> — Fill in genome FASTA, GTF, output folder, and conda env name.</li>
+        <li><b style="color:var(--text)">Parameters</b> — Toggle flags on/off as needed.</li>
+        <li><b style="color:var(--text)">Script preview</b> — Copy or download the script. Run it on your HPC where FLAIR is installed.</li>
       </ol>
     </div>
     <div class="card">
       <div class="card-title">Pipeline steps</div>
-      <div style="font-family:var(--mono);font-size:12px;line-height:2;color:var(--muted)">
-        <div><span style="color:var(--accent)">01</span> flair align &nbsp;&nbsp;&nbsp;&nbsp; Map ONT reads to the genome (minimap2 under the hood)</div>
-        <div><span style="color:var(--accent)">02</span> flair correct &nbsp;&nbsp; Fix splice junctions using GTF annotation</div>
-        <div><span style="color:var(--accent)">03</span> flair collapse &nbsp; Collapse corrected reads into isoform models</div>
-        <div><span style="color:var(--accent)">04</span> flair combine &nbsp;&nbsp; Merge isoforms across all samples into a unified set</div>
-        <div><span style="color:var(--accent)">05</span> flair quantify &nbsp; Quantify isoform expression per sample</div>
-        <div><span style="color:var(--accent)">06</span> predictProductivity &nbsp; Predict ORFs, productive vs NMD isoforms</div>
-        <div><span style="color:var(--accent)">07</span> plot_isoform_usage &nbsp; Plot isoform proportions for your gene of interest</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title">References &amp; links</div>
-      <div style="font-size:13px;line-height:2;color:var(--muted)">
-        <div><a href="https://github.com/BrooksLab/flair" target="_blank" style="color:var(--accent)">FLAIR GitHub</a> — full documentation and installation</div>
-        <div><a href="https://flair.readthedocs.io" target="_blank" style="color:var(--accent)">FLAIR ReadTheDocs</a> — command reference</div>
-        <div><a href="https://www.gencodegenes.org" target="_blank" style="color:var(--accent)">GENCODE</a> — reference annotation downloads</div>
+      <div style="font-family:var(--mono);font-size:12px;line-height:2.2;color:var(--muted)">
+        <div><span style="color:var(--accent)">01</span> &nbsp;cat / cp &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Merge FASTQ files for multi-lane samples</div>
+        <div><span style="color:var(--accent)">02</span> &nbsp;flair align &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map ONT reads to genome</div>
+        <div><span style="color:var(--accent)">03</span> &nbsp;flair correct &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Correct splice junctions using GTF</div>
+        <div><span style="color:var(--accent)">04</span> &nbsp;flair collapse &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collapse reads into isoform models</div>
+        <div><span style="color:var(--accent)">05</span> &nbsp;flair combine &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Merge isoforms across all samples</div>
+        <div><span style="color:var(--accent)">06</span> &nbsp;flair quantify &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantify isoform expression</div>
+        <div><span style="color:var(--accent)">07</span> &nbsp;predictProductivity &nbsp;Predict productive vs NMD isoforms</div>
+        <div><span style="color:var(--accent)">08</span> &nbsp;plot_isoform_usage &nbsp;&nbsp;Plot isoform usage for your gene</div>
       </div>
     </div>
   </div>
@@ -429,302 +285,352 @@ select{cursor:pointer}
 </div>
 
 <script>
-// ── State ──────────────────────────────────────────────────────────────────
-let samples = [
-  {name:'Patient',  files:['Patient_lane1.fastq.gz'],                         batch:'batch1'},
-  {name:'Paternal', files:['Paternal_lane1.fastq.gz','Paternal_lane2.fastq.gz'], batch:'batch1'},
-  {name:'NHF',      files:['NHF_lane1.fastq.gz'],                             batch:'batch2'},
-];
+var samples = [];
 
-// ── Nav ────────────────────────────────────────────────────────────────────
 function showPane(id) {
-  document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.pane').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('active'); });
   document.getElementById('pane-'+id).classList.add('active');
   document.getElementById('nav-'+id).classList.add('active');
   if (id === 'script') renderScript();
   if (id === 'pipeline') renderSteps();
 }
 
-// ── Badges ─────────────────────────────────────────────────────────────────
 function updateBadges() {
-  const g = document.getElementById('geneId').value.trim();
+  var g = document.getElementById('geneId').value.trim();
   document.getElementById('gene-badge').textContent = g || 'no gene';
-  document.getElementById('sample-count-badge').textContent = samples.length + ' sample' + (samples.length !== 1 ? 's':'');
+  document.getElementById('sample-count-badge').textContent = samples.length + (samples.length === 1 ? ' sample' : ' samples');
 }
 
-// ── Samples ────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
 function renderSamples() {
-  const el = document.getElementById('sample-list');
+  var el = document.getElementById('sample-list');
   if (!samples.length) {
-    el.innerHTML = '<p style="color:var(--muted);font-size:13px;font-family:var(--mono)">No samples. Click "Add sample" to begin.</p>';
-    updateBadges(); return;
+    el.innerHTML = '<p class="empty-state">No samples yet — click "+ Add sample" above.</p>';
+    updateBadges();
+    return;
   }
-  el.innerHTML = samples.map((s, si) => `
-    <div class="sample-card">
-      <div class="sample-header">
-        <div class="sample-num">${si+1}</div>
-        <input type="text" value="${esc(s.name)}" oninput="samples[${si}].name=this.value;updateBadges()" 
-               style="background:transparent;border:none;border-bottom:1px solid var(--border2);border-radius:0;padding:2px 4px;font-size:13px;font-weight:500;color:var(--text);width:160px">
-        <span style="font-size:11px;color:var(--muted);font-family:var(--mono);margin-left:4px">batch:</span>
-        <input type="text" value="${esc(s.batch)}" oninput="samples[${si}].batch=this.value"
-               style="background:transparent;border:none;border-bottom:1px solid var(--border2);border-radius:0;padding:2px 4px;font-size:11px;font-family:var(--mono);color:var(--muted);width:70px">
-        <button class="btn btn-danger" style="margin-left:auto" onclick="removeSample(${si})">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
-          Remove
-        </button>
-      </div>
-      <div class="fastq-list">
-        ${s.files.map((f,fi) => `
-          <div class="fastq-row">
-            <svg class="fastq-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            <input type="text" value="${esc(f)}" placeholder="path/to/reads.fastq.gz"
-                   oninput="samples[${si}].files[${fi}]=this.value">
-            <button class="btn btn-danger" style="border:none;padding:2px 6px" onclick="removeFastq(${si},${fi})"
-                    ${s.files.length===1?'disabled style="opacity:.3;cursor:not-allowed;border:none;padding:2px 6px"':''}>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-          </div>`).join('')}
-      </div>
-      ${s.files.length > 1 ? `<div class="multi-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
-        ${s.files.length} files will be concatenated (cat)
-      </div>` : ''}
-      <button class="btn btn-sm" onclick="addFastq(${si})" style="margin-top:8px">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Add lane / file
-      </button>
-    </div>`).join('');
+  var html = '';
+  for (var si = 0; si < samples.length; si++) {
+    var s = samples[si];
+    html += '<div class="sample-card">';
+    html += '<div class="sample-header">';
+    html += '<div class="sample-num">' + (si+1) + '</div>';
+    html += '<div style="flex:1;min-width:120px">';
+    html += '<label class="field-label" style="margin-bottom:2px">Sample name</label>';
+    html += '<input type="text" value="' + esc(s.name) + '" placeholder="e.g. Patient" oninput="samples['+si+'].name=this.value;updateBadges()" style="width:100%">';
+    html += '</div>';
+    html += '<div style="width:100px">';
+    html += '<label class="field-label" style="margin-bottom:2px">Batch ID</label>';
+    html += '<input type="text" value="' + esc(s.batch) + '" placeholder="batch1" oninput="samples['+si+'].batch=this.value" style="width:100%">';
+    html += '</div>';
+    html += '<button class="btn btn-danger" onclick="removeSample('+si+')" style="align-self:flex-end">Remove</button>';
+    html += '</div>';
+    html += '<label class="field-label">FASTQ file path(s)</label>';
+    html += '<div class="fastq-list">';
+    for (var fi = 0; fi < s.files.length; fi++) {
+      html += '<div class="fastq-row">';
+      html += '<span style="color:var(--teal);font-size:12px;font-family:var(--mono);flex-shrink:0">file ' + (fi+1) + '</span>';
+      html += '<input type="text" value="' + esc(s.files[fi]) + '" placeholder="/path/to/reads.fastq.gz" oninput="samples['+si+'].files['+fi+']=this.value">';
+      if (s.files.length > 1) {
+        html += '<button class="btn btn-danger" style="padding:2px 8px;font-size:11px;flex-shrink:0" onclick="removeFastq('+si+','+fi+')">x</button>';
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+    if (s.files.length > 1) {
+      html += '<div class="multi-badge">&#8627; ' + s.files.length + ' files will be concatenated (cat) automatically</div>';
+    }
+    html += '<button class="btn btn-sm" onclick="addFastq('+si+')" style="margin-top:8px">+ Add lane / file</button>';
+    html += '</div>';
+  }
+  el.innerHTML = html;
   updateBadges();
 }
 
 function addSample() {
-  samples.push({name:'Sample'+(samples.length+1), files:[''], batch:'batch1'});
+  samples.push({ name: '', files: [''], batch: 'batch1' });
   renderSamples();
 }
-function removeSample(i) { samples.splice(i,1); renderSamples(); }
-function addFastq(si) { samples[si].files.push(''); renderSamples(); }
-function removeFastq(si, fi) { if(samples[si].files.length>1){ samples[si].files.splice(fi,1); renderSamples(); } }
-function esc(s){ return String(s).replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
-// ── Mode toggle ───────────────────────────────────────────────────────────
+function removeSample(i) {
+  samples.splice(i, 1);
+  renderSamples();
+}
+
+function addFastq(si) {
+  samples[si].files.push('');
+  renderSamples();
+}
+
+function removeFastq(si, fi) {
+  if (samples[si].files.length > 1) {
+    samples[si].files.splice(fi, 1);
+    renderSamples();
+  }
+}
+
 function updateModeAlert() {
-  const t = document.getElementById('useTranscriptome').checked;
-  const el = document.getElementById('mode-alert');
-  if(t) {
-    el.className='alert alert-warn';
-    el.querySelector('svg').innerHTML='<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>';
-    el.querySelector('svg+*,span,text').textContent||0;
-    el.innerHTML=el.innerHTML.replace(/>.*$/s,`>Transcriptome mode: one flair transcriptome call per sample. Input should be sorted BAM files (not FASTQ). Set BAM paths in the FASTQ fields above.`);
-    document.getElementById('align-params').style.opacity='0.4';
-    document.getElementById('align-params').style.pointerEvents='none';
+  var t = document.getElementById('useTranscriptome').checked;
+  var el = document.getElementById('mode-alert');
+  if (t) {
+    el.className = 'alert alert-warn';
+    el.textContent = 'Transcriptome mode: one flair transcriptome call per sample. Input should be sorted BAM files (not FASTQ).';
+    document.getElementById('align-params').style.opacity = '0.4';
+    document.getElementById('align-params').style.pointerEvents = 'none';
   } else {
-    el.className='alert alert-info';
-    el.innerHTML=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    Standard mode: align → correct → collapse → combine → quantify → predictProductivity`;
-    document.getElementById('align-params').style.opacity='1';
-    document.getElementById('align-params').style.pointerEvents='auto';
+    el.className = 'alert alert-info';
+    el.textContent = 'Standard mode: align → correct → collapse → combine → quantify → predictProductivity';
+    document.getElementById('align-params').style.opacity = '1';
+    document.getElementById('align-params').style.pointerEvents = 'auto';
   }
 }
 
-// ── Steps ─────────────────────────────────────────────────────────────────
 function renderSteps() {
-  const t = document.getElementById('useTranscriptome').checked;
-  const steps = t ? [
-    {n:'01', name:'flair transcriptome', desc:'Single step: collapse + correct + predictCDS per sample'},
-    {n:'02', name:'flair combine',       desc:'Merge isoforms across all samples'},
-    {n:'03', name:'flair quantify',      desc:'Quantify isoform expression per sample'},
+  var t = document.getElementById('useTranscriptome').checked;
+  var steps = t ? [
+    {n:'01', name:'flair transcriptome', desc:'Single step per sample (collapse + correct + predictCDS)'},
+    {n:'02', name:'flair combine', desc:'Merge isoforms across all samples'},
+    {n:'03', name:'flair quantify', desc:'Quantify isoform expression per sample'},
     {n:'04', name:'predictProductivity', desc:'Predict productive vs NMD isoforms'},
-    {n:'05', name:'plot_isoform_usage',  desc:'Visualise isoform usage for gene of interest'},
+    {n:'05', name:'plot_isoform_usage', desc:'Plot isoform usage for gene of interest'},
   ] : [
-    {n:'01', name:'cat (concatenation)', desc:'Merge FASTQ files for multi-lane samples'},
-    {n:'02', name:'flair align',         desc:'Map ONT reads to genome with minimap2'},
-    {n:'03', name:'flair correct',       desc:'Correct splice junctions using GTF'},
-    {n:'04', name:'flair collapse',      desc:'Collapse reads into isoform models'},
-    {n:'05', name:'flair combine',       desc:'Merge isoforms across all samples'},
-    {n:'06', name:'flair quantify',      desc:'Quantify isoform expression per sample'},
+    {n:'01', name:'cat / cp', desc:'Concatenate multi-lane FASTQ files'},
+    {n:'02', name:'flair align', desc:'Map ONT reads to genome'},
+    {n:'03', name:'flair correct', desc:'Correct splice junctions using GTF'},
+    {n:'04', name:'flair collapse', desc:'Collapse reads into isoform models'},
+    {n:'05', name:'flair combine', desc:'Merge isoforms across all samples'},
+    {n:'06', name:'flair quantify', desc:'Quantify isoform expression per sample'},
     {n:'07', name:'predictProductivity', desc:'Predict productive vs NMD isoforms'},
-    {n:'08', name:'plot_isoform_usage',  desc:'Visualise isoform usage for gene of interest'},
+    {n:'08', name:'plot_isoform_usage', desc:'Plot isoform usage for gene of interest'},
   ];
-  const n = samples.length;
-  const nf = samples.reduce((a,s)=>a+s.files.length,0);
-  document.getElementById('m-samples').textContent = n;
-  document.getElementById('m-fastq').textContent = nf;
+  document.getElementById('m-samples').textContent = samples.length;
+  document.getElementById('m-fastq').textContent = samples.reduce(function(a,s){ return a + s.files.length; }, 0);
   document.getElementById('m-steps').textContent = steps.length;
-  document.getElementById('step-list').innerHTML = steps.map(s=>`
-    <div class="step">
-      <div class="step-num">${s.n}</div>
-      <div class="step-body">
-        <div class="step-name">${s.name}</div>
-        <div class="step-desc">${s.desc}</div>
-      </div>
-      <div class="step-status"><span class="badge-pill badge-amber">queued</span></div>
-    </div>`).join('');
+  var html = '';
+  for (var i = 0; i < steps.length; i++) {
+    html += '<div class="step"><div class="step-num">' + steps[i].n + '</div>';
+    html += '<div class="step-body"><div class="step-name">' + steps[i].name + '</div>';
+    html += '<div class="step-desc">' + steps[i].desc + '</div></div></div>';
+  }
+  document.getElementById('step-list').innerHTML = html;
 }
 
-// ── Script builder ────────────────────────────────────────────────────────
 function buildScript() {
-  const genome  = document.getElementById('genomeFa').value  || 'GENOME_FASTA';
-  const gtf     = document.getElementById('gtfFile').value   || 'GTF_FILE';
-  const out     = document.getElementById('outDir').value    || 'OUTPUT_DIR';
-  const env     = document.getElementById('condaEnv').value  || 'flair';
-  const threads = document.getElementById('threads').value   || '24';
-  const gene    = document.getElementById('geneId').value    || 'GENE_ID';
-  const minR    = document.getElementById('minReads').value  || '100';
-  const nvrna   = document.getElementById('nvrna').checked;
-  const str     = document.getElementById('stringent').checked;
-  const cs      = document.getElementById('checkSplice').checked;
-  const lorf    = document.getElementById('longestOrf').checked;
-  const tsMode  = document.getElementById('useTranscriptome').checked;
+  var genome  = document.getElementById('genomeFa').value  || 'GENOME_FASTA';
+  var gtf     = document.getElementById('gtfFile').value   || 'GTF_FILE';
+  var out     = document.getElementById('outDir').value    || 'OUTPUT_DIR';
+  var env     = document.getElementById('condaEnv').value  || 'flair';
+  var threads = document.getElementById('threads').value   || '24';
+  var gene    = document.getElementById('geneId').value    || 'GENE_ID';
+  var minR    = document.getElementById('minReads').value  || '100';
+  var nvrna   = document.getElementById('nvrna').checked;
+  var str     = document.getElementById('stringent').checked;
+  var cs      = document.getElementById('checkSplice').checked;
+  var lorf    = document.getElementById('longestOrf').checked;
+  var tsMode  = document.getElementById('useTranscriptome').checked;
+  var combinedName = samples.map(function(s){ return s.name || 'sample'; }).join('_') || 'combined';
+  var L = [];
 
-  const combinedName = samples.map(s=>s.name).join('_') || 'combined';
-  const L = [];
-
-  const add = (...lines) => lines.forEach(l => L.push(l));
-  const blk = (title) => { add('', `# ${'='.repeat(60)}`, `# ${title}`, `# ${'='.repeat(60)}`); };
-
-  add(`#!/bin/bash`, `set -euo pipefail`, ``, `# Generated by ONT PCR isoform pipeline GUI`, ``);
-  add(`cd "${out}"`);
-  if (!tsMode) add(`mkdir -p 01_flair_align 02_flair_correct 03_flair_collapse 04_flair_combine 05_flair_quantify 06_flair_predictProductivity`);
-  add(``, `source "$(conda info --base)/etc/profile.d/conda.sh"`, `conda activate ${env}`, ``);
-
-  // Concatenation
-  const multiLane = samples.filter(s => s.files.length > 1);
-  const singleLane = samples.filter(s => s.files.length === 1);
+  L.push('#!/bin/bash');
+  L.push('set -euo pipefail');
+  L.push('');
+  L.push('# Generated by ONT PCR isoform pipeline GUI');
+  L.push('');
+  L.push('cd "' + out + '"');
   if (!tsMode) {
-    blk('Step 01 — Concatenate multi-lane FASTQ files');
-    multiLane.forEach(s => add(`cat ${s.files.join(' ')} > ${s.name}.fastq.gz`));
-    singleLane.forEach(s => add(`cp "${s.files[0]}" "${s.name}.fastq.gz"`));
+    L.push('mkdir -p 01_flair_align 02_flair_correct 03_flair_collapse 04_flair_combine 05_flair_quantify 06_flair_predictProductivity');
   }
+  L.push('');
+  L.push('source "$(conda info --base)/etc/profile.d/conda.sh"');
+  L.push('conda activate ' + env);
+  L.push('');
 
   if (!tsMode) {
-    blk('Step 02 — flair align');
-    samples.forEach(s => {
-      add(`flair align \\`,
-          `    --genome "${genome}" \\`,
-          `    --reads "${s.name}.fastq.gz" \\`,
-          `    --output "01_flair_align/${s.name}" \\`,
-          `    --threads ${threads}` + (nvrna ? ` \\`, `    --nvrna` : ''),
-          ``);
-    });
+    L.push('# ============================================================');
+    L.push('# Step 01 — Concatenate / copy FASTQ files');
+    L.push('# ============================================================');
+    for (var i = 0; i < samples.length; i++) {
+      var s = samples[i];
+      var nm = s.name || ('sample'+(i+1));
+      if (s.files.length > 1) {
+        L.push('cat ' + s.files.join(' ') + ' > ' + nm + '.fastq.gz');
+      } else {
+        L.push('cp "' + (s.files[0]||'') + '" "' + nm + '.fastq.gz"');
+      }
+    }
+    L.push('');
 
-    blk('Step 03 — flair correct');
-    samples.forEach(s => {
-      add(`flair correct \\`,
-          `    -q "01_flair_align/${s.name}.bed" \\`,
-          `    -f "${gtf}" \\`,
-          `    -o "02_flair_correct/${s.name}"`,
-          ``);
-    });
+    L.push('# ============================================================');
+    L.push('# Step 02 — flair align');
+    L.push('# ============================================================');
+    for (var i = 0; i < samples.length; i++) {
+      var nm = samples[i].name || ('sample'+(i+1));
+      L.push('flair align \\');
+      L.push('    --genome "' + genome + '" \\');
+      L.push('    --reads "' + nm + '.fastq.gz" \\');
+      L.push('    --output "01_flair_align/' + nm + '" \\');
+      L.push('    --threads ' + threads + (nvrna ? ' \\' : ''));
+      if (nvrna) L.push('    --nvrna');
+      L.push('');
+    }
 
-    blk('Step 04 — flair collapse');
-    const colFlags = [str && '--stringent', cs && '--check_splice'].filter(Boolean);
-    samples.forEach(s => {
-      add(`flair collapse \\`,
-          `  -g "${genome}" \\`,
-          `  -f "${gtf}" \\`,
-          `  -r "${s.name}.fastq.gz" \\`,
-          `  -q "02_flair_correct/${s.name}_all_corrected.bed" \\`,
-          `  -o "03_flair_collapse/${s.name}"` + (colFlags.length ? ` \\` : ''),
-          ...colFlags.map((f,i)=> `  ${f}` + (i<colFlags.length-1?' \\':'')),
-          ``);
-    });
+    L.push('# ============================================================');
+    L.push('# Step 03 — flair correct');
+    L.push('# ============================================================');
+    for (var i = 0; i < samples.length; i++) {
+      var nm = samples[i].name || ('sample'+(i+1));
+      L.push('flair correct \\');
+      L.push('    -q "01_flair_align/' + nm + '.bed" \\');
+      L.push('    -f "' + gtf + '" \\');
+      L.push('    -o "02_flair_correct/' + nm + '"');
+      L.push('');
+    }
+
+    L.push('# ============================================================');
+    L.push('# Step 04 — flair collapse');
+    L.push('# ============================================================');
+    for (var i = 0; i < samples.length; i++) {
+      var nm = samples[i].name || ('sample'+(i+1));
+      L.push('flair collapse \\');
+      L.push('  -g "' + genome + '" \\');
+      L.push('  -f "' + gtf + '" \\');
+      L.push('  -r "' + nm + '.fastq.gz" \\');
+      L.push('  -q "02_flair_correct/' + nm + '_all_corrected.bed" \\');
+      L.push('  -o "03_flair_collapse/' + nm + '"' + (str||cs ? ' \\' : ''));
+      if (str && cs) { L.push('  --stringent \\'); L.push('  --check_splice'); }
+      else if (str)  { L.push('  --stringent'); }
+      else if (cs)   { L.push('  --check_splice'); }
+      L.push('');
+    }
   } else {
-    blk('Step 01 — flair transcriptome (per sample)');
-    const colFlags = [str && '--stringent', cs && '--check_splice'].filter(Boolean);
-    samples.forEach(s => {
-      add(`flair transcriptome \\`,
-          `  -b "${s.files[0]}" \\`,
-          `  -g "${genome}" \\`,
-          `  -f "${gtf}" \\`,
-          `  -o "${s.name}"` + (colFlags.length||true ? ` \\` : ''),
-          ...colFlags.map(f=>`  ${f} \\`),
-          `  --predictCDS`,
-          ``);
-    });
+    L.push('# ============================================================');
+    L.push('# Step 01 — flair transcriptome (per sample)');
+    L.push('# ============================================================');
+    for (var i = 0; i < samples.length; i++) {
+      var s = samples[i];
+      var nm = s.name || ('sample'+(i+1));
+      L.push('flair transcriptome \\');
+      L.push('  -b "' + (s.files[0]||'') + '" \\');
+      L.push('  -g "' + genome + '" \\');
+      L.push('  -f "' + gtf + '" \\');
+      L.push('  -o "' + nm + '"' + (str||cs ? ' \\' : ''));
+      if (str && cs) { L.push('  --stringent \\'); L.push('  --check_splice \\'); }
+      else if (str)  { L.push('  --stringent \\'); }
+      else if (cs)   { L.push('  --check_splice \\'); }
+      L.push('  --predictCDS');
+      L.push('');
+    }
   }
 
-  const colDir = tsMode ? '' : '03_flair_collapse/';
-  const combDir = tsMode ? '' : '04_flair_combine/';
-  const quantDir = tsMode ? '' : '05_flair_quantify/';
-  const prodDir = tsMode ? '' : '06_flair_predictProductivity/';
+  var colDir  = tsMode ? '' : '03_flair_collapse/';
+  var combDir = tsMode ? '' : '04_flair_combine/';
+  var quantDir= tsMode ? '' : '05_flair_quantify/';
+  var prodDir = tsMode ? '' : '06_flair_predictProductivity/';
+  var stepOff = tsMode ? 1 : 4;
 
-  blk(`Step ${tsMode?'02':'05'} — flair combine`);
-  add(`cat > combine_manifest.tsv << 'MANIFEST_EOF'`);
-  samples.forEach(s => add(`${s.name}\tisoform\t${colDir}${s.name}.isoforms.bed\t${colDir}${s.name}.isoforms.fa`));
-  add(`MANIFEST_EOF`, ``);
-  add(`flair combine \\`,
-      `    -m combine_manifest.tsv \\`,
-      `    -o "${combDir}${combinedName}" \\`,
-      `    -c`, ``);
+  L.push('# ============================================================');
+  L.push('# Step 0' + (stepOff+1) + ' — flair combine');
+  L.push('# ============================================================');
+  L.push("cat > combine_manifest.tsv << 'MANIFEST_EOF'");
+  for (var i = 0; i < samples.length; i++) {
+    var nm = samples[i].name || ('sample'+(i+1));
+    L.push(nm + '\tisoform\t' + colDir + nm + '.isoforms.bed\t' + colDir + nm + '.isoforms.fa');
+  }
+  L.push('MANIFEST_EOF');
+  L.push('');
+  L.push('flair combine \\');
+  L.push('    -m combine_manifest.tsv \\');
+  L.push('    -o "' + combDir + combinedName + '" \\');
+  L.push('    -c');
+  L.push('');
 
-  blk(`Step ${tsMode?'03':'06'} — flair quantify`);
-  add(`cat > quantify_manifest.tsv << 'MANIFEST_EOF'`);
-  samples.forEach((s,i) => add(`${s.name}\tPool${i+1}\t${s.batch}\t${s.name}.fastq.gz`));
-  add(`MANIFEST_EOF`, ``);
-  add(`flair quantify \\`,
-      `    -r quantify_manifest.tsv \\`,
-      `    -i "${combDir}${combinedName}.fa" \\`,
-      `    -o "${quantDir}${combinedName}_quantify" \\`,
-      `    --sample_id_only`, ``);
+  L.push('# ============================================================');
+  L.push('# Step 0' + (stepOff+2) + ' — flair quantify');
+  L.push('# ============================================================');
+  L.push("cat > quantify_manifest.tsv << 'MANIFEST_EOF'");
+  for (var i = 0; i < samples.length; i++) {
+    var s = samples[i];
+    var nm = s.name || ('sample'+(i+1));
+    L.push(nm + '\tPool' + (i+1) + '\t' + s.batch + '\t' + nm + '.fastq.gz');
+  }
+  L.push('MANIFEST_EOF');
+  L.push('');
+  L.push('flair quantify \\');
+  L.push('    -r quantify_manifest.tsv \\');
+  L.push('    -i "' + combDir + combinedName + '.fa" \\');
+  L.push('    -o "' + quantDir + combinedName + '_quantify" \\');
+  L.push('    --sample_id_only');
+  L.push('');
 
-  blk(`Step ${tsMode?'04':'07'} — predictProductivity`);
-  add(`predictProductivity \\`,
-      `  -i "${combDir}${combinedName}.bed" \\`,
-      `  -f "${genome}" \\`,
-      `  -g "${gtf}" \\`,
-      `  -o "${prodDir}${combinedName}_predictProd"` + (lorf ? ` \\`, `  --longestORF` : ''),
-      ``);
+  L.push('# ============================================================');
+  L.push('# Step 0' + (stepOff+3) + ' — predictProductivity');
+  L.push('# ============================================================');
+  L.push('predictProductivity \\');
+  L.push('  -i "' + combDir + combinedName + '.bed" \\');
+  L.push('  -f "' + genome + '" \\');
+  L.push('  -g "' + gtf + '" \\');
+  L.push('  -o "' + prodDir + combinedName + '_predictProd"' + (lorf ? ' \\' : ''));
+  if (lorf) L.push('  --longestORF');
+  L.push('');
 
-  blk(`Step ${tsMode?'05':'08'} — plot_isoform_usage`);
-  add(`plot_isoform_usage \\`,
-      `  "${prodDir}${combinedName}_predictProd.bed" \\`,
-      `  "${quantDir}${combinedName}_quantify.counts.tsv" \\`,
-      `  ${gene} \\`,
-      `  --min_reads ${minR}`,
-      ``, `echo "✓ Pipeline complete!"`, ``);
+  L.push('# ============================================================');
+  L.push('# Step 0' + (stepOff+4) + ' — plot_isoform_usage');
+  L.push('# ============================================================');
+  L.push('plot_isoform_usage \\');
+  L.push('  "' + prodDir + combinedName + '_predictProd.bed" \\');
+  L.push('  "' + quantDir + combinedName + '_quantify.counts.tsv" \\');
+  L.push('  ' + gene + ' \\');
+  L.push('  --min_reads ' + minR);
+  L.push('');
+  L.push('echo "Pipeline complete!"');
 
   return L.join('\n');
 }
 
 function renderScript() {
-  const raw = buildScript();
-  // Simple syntax highlight
-  const html = raw
+  var raw = buildScript();
+  var html = raw
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/(#.*)/g, '<span class="cm">$1</span>')
-    .replace(/\b(flair|cat|cp|mkdir|source|conda|echo|set)\b/g, '<span class="kw">$1</span>')
+    .replace(/(#[^\n]*)/g, '<span class="cm">$1</span>')
+    .replace(/\b(flair|cat|cp|mkdir|source|conda|echo|set|predictProductivity|plot_isoform_usage)\b/g, '<span class="kw">$1</span>')
     .replace(/(--[\w-]+)/g, '<span class="flag">$1</span>')
     .replace(/("([^"]*)")/g, '<span class="str">$1</span>');
   document.getElementById('script-out').innerHTML = html;
 }
 
 function copyScript() {
-  navigator.clipboard.writeText(buildScript()).then(() => {
-    const b = document.getElementById('copy-btn');
-    const orig = b.innerHTML;
-    b.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+  var text = buildScript();
+  navigator.clipboard.writeText(text).then(function() {
+    var b = document.getElementById('copy-btn');
+    var orig = b.textContent;
+    b.textContent = 'Copied!';
     b.style.background = '#122d1a';
-    setTimeout(() => { b.innerHTML = orig; b.style.background=''; }, 2000);
+    setTimeout(function(){ b.textContent = orig; b.style.background = ''; }, 2000);
   });
 }
 
 function downloadScript() {
-  const blob = new Blob([buildScript()], {type:'text/x-shellscript'});
-  const a = document.createElement('a');
+  var blob = new Blob([buildScript()], {type:'text/x-shellscript'});
+  var a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = 'ont_flair_pipeline.sh';
   a.click();
 }
 
-// ── Validate ───────────────────────────────────────────────────────────────
 function validate() {
-  const errs = [];
+  var errs = [];
   if (!samples.length) errs.push('Add at least one sample.');
-  samples.forEach((s,i) => {
-    if (!s.name.trim()) errs.push(`Sample ${i+1}: name is empty.`);
-    s.files.forEach((f,fi) => { if(!f.trim()) errs.push(`Sample "${s.name||i+1}": file ${fi+1} path is empty.`); });
-  });
+  for (var i = 0; i < samples.length; i++) {
+    var s = samples[i];
+    if (!s.name.trim()) errs.push('Sample ' + (i+1) + ': name is empty.');
+    for (var fi = 0; fi < s.files.length; fi++) {
+      if (!s.files[fi].trim()) errs.push('Sample "' + (s.name||i+1) + '": file ' + (fi+1) + ' path is empty.');
+    }
+  }
   if (!document.getElementById('genomeFa').value.trim()) errs.push('Genome FASTA path is required (Reference tab).');
   if (!document.getElementById('gtfFile').value.trim()) errs.push('GTF annotation path is required (Reference tab).');
   if (!document.getElementById('outDir').value.trim()) errs.push('Output directory is required (Reference tab).');
@@ -733,27 +639,18 @@ function validate() {
 }
 
 function validateAndShow() {
-  const errs = validate();
-  const el = document.getElementById('validation-out');
+  var errs = validate();
+  var el = document.getElementById('validation-out');
   if (errs.length) {
-    el.innerHTML = errs.map(e => `
-      <div class="alert alert-warn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        ${e}
-      </div>`).join('');
+    el.innerHTML = errs.map(function(e){ return '<div class="alert alert-warn">' + e + '</div>'; }).join('');
   } else {
-    el.innerHTML = `<div class="alert alert-success">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>
-      All inputs valid — ${samples.length} sample(s) configured. Click "Generate script" to continue.
-    </div>`;
+    el.innerHTML = '<div class="alert alert-success">All inputs valid — ' + samples.length + ' sample(s) configured. Click "Generate script" to continue.</div>';
   }
 }
 
-// ── Init ──────────────────────────────────────────────────────────────────
-renderSamples();
-renderSteps();
-document.getElementById('geneId').value = 'ENSG00000183597';
+// Init
 updateBadges();
+renderSteps();
 </script>
 </body>
 </html>
